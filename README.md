@@ -7,8 +7,8 @@
 - Preferred Programming Language: Python
 
 ## Coding Profiles
-- LeetCode: [GAYATRI_SAHU](https://leetcode.com/gayatri19/)
-- HackerRank: [GAYATRI_SAHU](https://www.hackerrank.com/gayatri_1923en11)
+- LeetCode: [GAYATRI_SAHU] (https://leetcode.com/gayatri19/)
+- HackerRank: [GAYATRI_SAHU] (https://www.hackerrank.com/gayatri_1923en11)
 
 ## Placement Module
 1. [DS I](https://github.com/YOURGITHUBUSERNAME/Pre-Placement-Module-2023/tree/main/DS%20I)
