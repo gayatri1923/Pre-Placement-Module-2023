@@ -1,0 +1,37 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        head, tail = 0, len(matrix)-1
+        idx = 0
+        while tail >= head:
+            mid = (head+tail)//2
+            if matrix[mid][0] > target:
+                tail = mid-1
+            elif matrix[mid][-1] < target:
+                head = mid+1
+            else:
+                idx = mid
+                break
+            if tail-head <= 1:
+                if matrix[tail][-1] < target:
+                    return False
+                if matrix[head][0] > target:
+                    return False
+                if matrix[head][-1] >= target:
+                    idx = head
+                    break
+                else:
+                    idx = tail
+                    break
+        
+        row = matrix[idx]
+        head, tail = 0, len(row)-1
+        while tail >= head:
+            mid = (head+tail)//2
+            if row[mid] == target:
+                return True
+            elif row[mid] > target:
+                tail = mid-1
+            elif row[mid] < target:
+                    head = mid+1
+        return False
+        
