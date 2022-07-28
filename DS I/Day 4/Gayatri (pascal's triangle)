@@ -1,0 +1,19 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        i=0
+        a =[]
+        while i <numRows:
+            b=[]
+            j=0
+            while j <= i:
+                if j == 0:
+                    b.append(1)
+                elif j == i:
+                    b.append(1)
+                else:
+                   b.append(a[i-1][j-1]+a[i-1][j])
+                j=j+1
+            a.append(b)    
+            i=i+1
+        return a
+        
