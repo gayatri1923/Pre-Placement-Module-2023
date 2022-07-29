@@ -1,0 +1,11 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(t) != len(s): return False
+        s_counter = Counter(s)
+        t_counter = Counter(t)     
+        
+        for char, occurrences in t_counter.items():
+            if char not in s_counter: return False
+            if s_counter[char] != occurrences: return False
+        
+        return True
