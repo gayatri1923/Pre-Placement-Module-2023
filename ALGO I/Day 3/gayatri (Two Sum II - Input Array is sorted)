@@ -1,0 +1,8 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        a = sorted(set(numbers))
+        for i in range(len(a)):
+            if (target - a[i]) in numbers :
+                return(numbers.index(a[i]) + 1, numbers.index((target - a[i]), numbers.index(a[i]) + 1) + 1)
+                break
+        
