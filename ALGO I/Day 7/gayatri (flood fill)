@@ -1,0 +1,25 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        rows, cols = len(image), len(image[0])
+        visited = set()
+        q = collections.deque()
+        orig_color = image[sr][sc]
+        q.append([sr, sc])
+        visited.add((sr, sc))
+        four_directions = [[1,0],[-1,0], [0,1], [0,-1]]
+        #initiate bfs!
+        while q:
+            cr, cc = q.popleft()
+            image[cr][cc] = color
+            #iterate through each of four directional neighbors!
+            for direction in four_directions:
+                r_change, c_change = direction
+                if(cr + r_change in range(rows) and
+                   cc + c_change in range(cols) and 
+                   image[cr+r_change][cc+c_change] == orig_color and
+                   (cr+r_change, cc+c_change) not in visited):
+                    q.append([cr+r_change, cc+c_change])
+                    visited.add((cr+r_change, cc+c_change))
+        #once bfs ends, return grid changed in place!
+        return image
+        
