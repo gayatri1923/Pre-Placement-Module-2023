@@ -1,0 +1,34 @@
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        move = [[-1,0], [1,0], [0,-1], [0,1]]
+        
+        def isValid(r, c):
+            return r in range(len(mat)) and c in range(len(mat[r]))
+        
+        # storing all 0's for BFS
+        row, col = len(mat), len(mat[0])
+        q = collections.deque()
+        for r in range(row):
+            for c in range(col):
+                
+                if mat[r][c] == 0:
+                    q.append([r,c])
+                
+                else:
+                    mat[r][c] = -1
+                    
+        # BFS 
+        while q:
+            r, c = q.popleft()
+            for row, col in move:
+                movx = r + row
+                movy = c + col
+                if isValid(movx, movy) and mat[movx][movy] == -1:
+                    # Storing dist b/w nearest 0 in the non-Zeor cell
+                    mat[movx][movy] = mat[r][c] + 1
+                    # store that infected cell in the q for further calculations
+                    q.append([movx, movy])
+                
+        return mat
+    
+        
