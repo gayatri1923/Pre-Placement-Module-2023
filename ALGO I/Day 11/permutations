@@ -1,0 +1,24 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        permutation = []
+        numsAvailable = nums[::]
+        def helper():
+            
+            if not numsAvailable:
+                res.append(permutation[::])
+                return
+            
+            for i in range(len(numsAvailable)):
+                temp = numsAvailable[i]
+                permutation.append(temp)
+                numsAvailable.pop(i)
+                helper()
+                numsAvailable.insert(i, temp)
+                permutation.pop()
+            
+            return
+        
+        helper()
+        return res
+        
