@@ -1,0 +1,21 @@
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        currentComb = [([i for i in range(1,k+1)], k)]
+        allCombs = [[i for i in range(1,k+1)]]
+        unused = [i for i in range(k+1,n+1)]
+        finalResult = []
+        end = 0
+        while unused:
+            currentUsed = unused.pop()
+            
+            newCombs = []
+            for comb, term in currentComb:
+                for i in range(0, term):
+                    newComb = comb + []
+                    newComb[i] = currentUsed
+                    newCombs.append((newComb, i+1))
+            currentComb = newCombs
+            allCombs += [comb[0] for comb in newCombs]
+        return [comb for comb in allCombs]
+        
+        
